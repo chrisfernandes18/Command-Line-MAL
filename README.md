@@ -35,4 +35,4 @@ Once a result has been selected by the user, the program will output the title, 
 ![Output for Black Clover](assets/images/output.png)
 
 ### Coming Soon
-Ability to make a new csv file if one does not exist that holds a list of anime that one has searched and wants to keep the information.
+Ability to make a new csv file if one does not exist, or use an existing csv file, that holds a list of anime that one has searched and wanted to keep its information.
