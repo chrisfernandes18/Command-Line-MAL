@@ -21,7 +21,7 @@ Once the modules are installed, enter the directory which contains the scripts i
 
 or
 
-`python3 cmd_mal.py` <br>
+`python3 cmd_mal.py` <br/>
 `Enter the title of the anime movie or show you want to search for: Black Clover`
 ---
 
