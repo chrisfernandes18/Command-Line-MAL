@@ -21,8 +21,9 @@ Once the modules are installed, enter the directory which contains the scripts i
 
 or
 
-`python3 cmd_mal.py` <br/>
+`python3 cmd_mal.py`
 `Enter the title of the anime movie or show you want to search for: Black Clover`
+
 ---
 
 When a search title has been provided, the program will output the number of results on MyAnimeList.net for that title, and then give a numbered list containing the first 5 results. The user can then select from a result from the list by entering the corresponding number, request the next 5 results by entering m, or exit by hitting enter. The user is able to keep requesting more results until every result has been displayed.
