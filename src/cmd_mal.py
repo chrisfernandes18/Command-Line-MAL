@@ -1,19 +1,6 @@
 import sys, re
 import bs4, requests
 
-def main(flag):
-
-    link, title = search_mal(get_user_input(flag))
-    
-    if link == None:
-        quit()
-    
-    mal_dict = mal_get_all_info(link, title)
-    print_mal_dict(mal_dict)
-    search_again()
-    return 0
-
-
 def get_user_input(flag): 
     """
     Returns a string containing user provided movie/tv title
@@ -302,7 +289,3 @@ def search_again():
                 print("Incorrect input. Please enter Y/y or N/n.")
         except:
             return quit()
-
-
-if __name__ == "__main__":
-    main(0)
