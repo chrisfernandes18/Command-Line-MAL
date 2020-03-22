@@ -149,11 +149,11 @@ def mal_get_all_info(link, title):
     anime_dict = dict()
     mal_soup = get_soup(link)
 
-    anime_dict['title'] = title
-    anime_dict['rating'] = mal_get_rating(mal_soup)
-    anime_dict['episodes'] = mal_get_episodes(mal_soup)
-    anime_dict['aired'] = mal_get_aired(mal_soup)
-    anime_dict['synopsis'] = mal_get_synopsis(mal_soup)
+    anime_dict['Title'] = title
+    anime_dict['Rating'] = mal_get_rating(mal_soup)
+    anime_dict['Episodes'] = mal_get_episodes(mal_soup)
+    anime_dict['Aired'] = mal_get_aired(mal_soup)
+    anime_dict['Synopsis'] = mal_get_synopsis(mal_soup)
 
     return anime_dict
 
@@ -253,11 +253,11 @@ def print_mal_dict(mal_dict):
     print("")
     print("--------------------------------------------------------------------")
     print("")
-    print(mal_dict['title'])
-    print("\033[1m" + "Rating: " + "\033[0m" + mal_dict['rating'])
-    print("\033[1m" + "Number of Episodes: " + "\033[0m" + mal_dict['episodes'])
-    print("\033[1m" + "Aired: " + "\033[0m" + mal_dict['aired'])
-    print("\033[1m" + "Synopsis: " + "\033[0m" + mal_dict['synopsis'])
+    print(mal_dict['Title'])
+    print("\033[1m" + "Rating: " + "\033[0m" + mal_dict['Rating'])
+    print("\033[1m" + "Number of Episodes: " + "\033[0m" + mal_dict['Episodes'])
+    print("\033[1m" + "Aired: " + "\033[0m" + mal_dict['Aired'])
+    print("\033[1m" + "Synopsis: " + "\033[0m" + mal_dict['Synopsis'])
     print("")
     print("--------------------------------------------------------------------")
     print("")
@@ -274,15 +274,15 @@ def search_again():
 
     Returns
     -------
-    function()
-        Either main() if we want to search again or 
+    int | function()
+        Either 1 if we want to search again or 
         quit() if we do not want to search again
     """
     while True:
         choice = input("Would you like to search again? (Y/N): ")
         try:
             if choice[0].lower() == 'y':
-                return main(1)
+                return 1
             elif choice[0].lower() == 'n':
                 return quit()
             else:
