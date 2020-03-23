@@ -35,7 +35,7 @@ Once a result has been selected by the user, the program will output the title, 
 ![Output for Black Clover](assets/images/output.png)
 
 ### CSV Capabilities
-Can make a new csv file or append to an existing file, given the filepath and name of the file. It holds the information that is displayed in the output.
+Can make a new CSV file or append to an existing file, given the filepath and name of the file. The CSV file holds the information that is displayed in the output, and it is ordered alphabetically by title of show or movie. If a title already exists in the CSV file, then it will update that row.
 
 ### Coming Soon
-Ability to order the csv file in alphabetical order.
+TBD what new features will be added.
