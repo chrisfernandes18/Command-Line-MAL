@@ -29,7 +29,7 @@ def export_to_csv(mal_dict):
                     with open(csv_file, 'a+') as csvfile:
                         writer = csv.DictWriter(csvfile, fieldnames=col_names)
                         writer.writerow(mal_dict)
-                    print("Title was added to csv file.")
+                    print("CSV file was created and the title was added to the file.")
                     return search_again()
                 except IOError:
                     print("I/O error")
@@ -39,7 +39,7 @@ def export_to_csv(mal_dict):
                         writer = csv.DictWriter(csvfile, fieldnames=col_names)
                         writer.writeheader()
                         writer.writerow(mal_dict)
-                    print("Title was added to csv file.")
+                    print("Title was appended to an existing csv file.")
                     return search_again()
                 except IOError:
                     print("I/O error")

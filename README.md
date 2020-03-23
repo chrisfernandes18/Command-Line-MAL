@@ -34,5 +34,8 @@ Once a result has been selected by the user, the program will output the title, 
 
 ![Output for Black Clover](assets/images/output.png)
 
+### CSV Capabilities
+Can make a new csv file or append to an existing file, given the filepath and name of the file. It holds the information that is displayed in the output.
+
 ### Coming Soon
-Ability to make a new csv file if one does not exist, or use an existing csv file, that holds a list of anime that one has searched and wanted to keep its information.
+Ability to order the csv file in alphabetical order.
