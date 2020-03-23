@@ -36,5 +36,7 @@ Once a result has been selected by the user, the program will output the title, 
 ### CSV Capabilities
 Can make a new CSV file or append to an existing file, given the filepath and name of the file. The CSV file holds the information that is displayed in the output, and it is ordered alphabetically by title of show or movie. If a title already exists in the CSV file, then it will update that row.
 
+![Example CSV File](assets/images/csv_file_ex.png)
+
 ### Coming Soon
 TBD what new features will be added.
