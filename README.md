@@ -1,7 +1,7 @@
 # Command Line MAL
 Inspired by https://github.com/Bryce-Tucker/Command-Line-IMDB
 
-A python script that allows you to look up movies and shows on MyAnimeList.net from the command line.
+A python script that allows you to look up movies and shows on MyAnimeList.net from the command line and save their information in a CSV file.
 
 ![Demo Gif](assets/images/cmd_demo.gif)
 
