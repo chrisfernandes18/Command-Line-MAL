@@ -34,7 +34,6 @@ def create_file(filename):
 
     """
     open(file_path, 'a+').write(filename + "\n")
-    print("File created.")
     return
 
 def read_file():
