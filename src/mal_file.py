@@ -34,6 +34,7 @@ def create_file(filename):
 
     """
     open(file_path, 'a+').write(filename + "\n")
+    print("File created.")
     return
 
 def read_file():
@@ -51,3 +52,33 @@ def read_file():
 
     """
     return open(file_path, 'r').readline()
+
+def edit_file(filename):
+    """
+    Returns create_file() or None
+
+    Parameters
+    ----------
+    filename: str
+        Name of the csv file we want to append to.
+
+    Returns
+    -------
+    create_file() or None
+
+    """
+    if file_exists():
+        os.remove(file_path)
+        return create_file(filename)
+    else:
+        print("File does not exist to change csv filename.")
+        while True:
+            question = input("Would you like to create file (Y/N)?: ")
+            q = question.lower()
+            if q == 'y':
+                return create_file(filename)
+            elif q == 'n':
+                break
+            else:
+                print("Please answer again.")
+        return

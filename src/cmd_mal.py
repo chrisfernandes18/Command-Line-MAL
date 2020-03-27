@@ -1,5 +1,6 @@
 import sys, re
 import bs4, requests
+from .mal_file import edit_file
 
 def get_user_input(flag): 
     """
@@ -21,9 +22,9 @@ def get_user_input(flag):
         if len(sys.argv) > 1:
             return " ".join(sys.argv[1:])
         else:
-            return input("Enter the title of the anime movie or show you want to search for: ")
+            return input("Enter the title of the anime movie or show you want to search for or M for more options: ")
     else:
-        return input("Enter the title of the anime movie or show you want to search for: ")
+        return input("Enter the title of the anime movie or show you want to search for or M for more options: ")
 
 
 def get_soup(link):
@@ -69,65 +70,79 @@ def search_mal(title, choice='m'):
         print("Did not provide a title.")
         search_again()
     
-    link = 'https://myanimelist.net/anime.php?q={}&show={}'
-    num = 0
-    search_soup = get_soup(link.format('+'.join(title.split()), num))
-    search_results = search_soup.findAll('a', class_='hoverinfo_trigger fw-b fl-l')
-
-    if search_results:
-        options = []
-
-        for search_field in search_results:
-            options.append(search_field)
-        
-        if options != []:
-            i = 0
-            length = len(options)
-            temp = 0
-
-            if (length > 5):
-                num = 5
+    if title.lower() == "m":
+        print("\nMore Options:\n")
+        print("(1). Change csv file name")
+        print("")
+        while True:
+            selection = input("Selection: ")
+            if (selection == "1"):
+                fname = input("New csv file name (include .csv file extension): ")
+                edit_file(fname)
+                break
             else:
-                num = length
-            
-            while True:
-                print("")
-                print("{} results were found for {}".format(num, title))
-                print("")
-
-                if (i == num):
-                    i = temp
-                else:
-                    temp = i
-
-                for i in range(i, num):
-                    print('({}). {}'.format(i + 1, options[i].string))
-                    i += 1
-
-                choice = input('\nEnter the number corresponding with your choice, (M)ore for more results, or <Enter> to quit: ')
-                
-                try: 
-                    if (choice[0].lower() == 'm'):
-                        if num < length:
-                            num += 5
-                        else:
-                            search_results = get_soup(link.format('+'.join(title.split()), num)).findAll('a', class_='hoverinfo_trigger fw-b fl-l')
-                            for search_field in search_results:
-                                options.append(search_field.string)
-                            length = len(options)
-                    elif (choice.isdigit()):
-                        try:
-                            return options[int(choice) - 1].get('href'), options[int(choice) - 1].string
-                        except: 
-                            pass
-                    else:
-                        continue
-                except:
-                    quit()
-
-    else:
-        print("No Results Found")
+                print("\nPlease select again\n")
         return None, None
+    else:
+        link = 'https://myanimelist.net/anime.php?q={}&show={}'
+        num = 0
+        search_soup = get_soup(link.format('+'.join(title.split()), num))
+        search_results = search_soup.findAll('a', class_='hoverinfo_trigger fw-b fl-l')
+
+        if search_results:
+            options = []
+
+            for search_field in search_results:
+                options.append(search_field)
+            
+            if options != []:
+                i = 0
+                length = len(options)
+                temp = 0
+
+                if (length > 5):
+                    num = 5
+                else:
+                    num = length
+                
+                while True:
+                    print("")
+                    print("{} results were found for {}".format(num, title))
+                    print("")
+
+                    if (i == num):
+                        i = temp
+                    else:
+                        temp = i
+
+                    for i in range(i, num):
+                        print('({}). {}'.format(i + 1, options[i].string))
+                        i += 1
+
+                    choice = input('\nEnter the number corresponding with your choice, (M)ore for more results, or <Enter> to quit: ')
+                    
+                    try: 
+                        if (choice[0].lower() == 'm'):
+                            if num < length:
+                                num += 5
+                            else:
+                                search_results = get_soup(link.format('+'.join(title.split()), num)).findAll('a', class_='hoverinfo_trigger fw-b fl-l')
+                                for search_field in search_results:
+                                    options.append(search_field.string)
+                                length = len(options)
+                        elif (choice.isdigit()):
+                            try:
+                                return options[int(choice) - 1].get('href'), options[int(choice) - 1].string
+                            except: 
+                                pass
+                        else:
+                            continue
+                    except:
+                        quit()
+
+        else:
+            print("No Results Found")
+            return None, None
 
 
 def mal_get_all_info(link, title):
@@ -279,7 +294,7 @@ def search_again():
         quit() if we do not want to search again
     """
     while True:
-        choice = input("Would you like to search again? (Y/N): ")
+        choice = input("Would you like to restart program? (Y/N): ")
         try:
             if choice[0].lower() == 'y':
                 return 1

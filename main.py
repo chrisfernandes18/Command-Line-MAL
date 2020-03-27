@@ -1,13 +1,11 @@
 from src.cmd_mal import search_again, search_mal, get_user_input, print_mal_dict, mal_get_all_info
 from src.maltocsv import export_to_csv
-from src.mal_file import file_exists
 
 def main(flag):
     while True:
-        file_exists()
         link, title = search_mal(get_user_input(flag))
         if link == None:
-            quit()
+            continue
         mal_dict = mal_get_all_info(link, title)
         print_mal_dict(mal_dict)
         flag = export_to_csv(mal_dict)
