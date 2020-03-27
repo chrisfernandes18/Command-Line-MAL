@@ -1,6 +1,12 @@
 import csv, os, operator
 from .cmd_mal import search_again
+from .mal_file import file_exists, read_file, create_file
 
+dir = ""
+if os.name == 'nt':
+    dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop/')
+else:
+    dir = "~/Desktop/"
 
 def export_to_csv(mal_dict):
     """
@@ -21,7 +27,15 @@ def export_to_csv(mal_dict):
     export = export[0].lower()
     while True:
         if (export == 'y'):
-            csv_file = input("What is the name of your CSV file (include filepath and .csv extension)?: ")
+            csv_file = ""
+            if file_exists():
+                csv_file = read_file()
+                csv_file = csv_file.strip()
+            else:
+                csv_file = input("What is the name of your CSV file (include .csv extension)?: ")
+                create_file(csv_file)
+            os.chdir(os.path.expanduser(dir))
+            print(csv_file)
             col_names = []
             for key in mal_dict.keys():
                 col_names.append(key)
