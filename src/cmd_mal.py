@@ -68,7 +68,7 @@ def search_mal(title, choice='m'):
     """
     if title == "":
         print("Did not provide a title.")
-        search_again()
+        return None, None
     
     if title.lower() == "m":
         print("\nMore Options:\n")
@@ -77,7 +77,13 @@ def search_mal(title, choice='m'):
         while True:
             selection = input("Selection: ")
             if (selection == "1"):
-                fname = input("New csv file name (include .csv file extension): ")
+                fname = ""
+                while True:
+                    fname = input("New csv file name (include .csv file extension): ")
+                    if fname == "":
+                        print("Please enter a valid name.")
+                    else:
+                        break
                 edit_file(fname)
                 break
             else:
