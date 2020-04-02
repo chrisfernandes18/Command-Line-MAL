@@ -29,7 +29,7 @@ When a search title has been provided, the program will output the number of res
 
 ![More Results for Black Clover](assets/images/more_results.png)
 
-Once a result has been selected by the user, the program will output the title, rating, number of episodes, when the show aired, and synopsis. Then it will ask if the user would like to search again.
+Once a result has been selected by the user, the program will output the title, rating, number of episodes, when the show aired, synopsis, and related anime. Then it will ask if the user would like to add this title to a CSV file.
 
 ![Output for Black Clover](assets/images/output.png)
 
