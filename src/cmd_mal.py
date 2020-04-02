@@ -316,7 +316,7 @@ def print_mal_dict(mal_dict):
     print("Aired: " + mal_dict['Aired'])
     print("Synopsis: " + mal_dict['Synopsis'])
     print("")
-    print("Related Anime: " + mal_dict['Related Anime'])
+    print("Related Anime:\n" + mal_dict['Related Anime'])
     print("--------------------------------------------------------------------")
     print("")
     return
