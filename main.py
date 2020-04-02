@@ -9,7 +9,6 @@ def main(flag):
         mal_dict = mal_get_all_info(link, title)
         print_mal_dict(mal_dict)
         flag = export_to_csv(mal_dict)
-
     return 0
 
 if __name__ == "__main__":

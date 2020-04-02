@@ -1,4 +1,4 @@
-import sys, re
+import sys, re, shutil
 import bs4, requests
 from .mal_file import edit_file
 
@@ -94,7 +94,12 @@ def search_mal(title, choice='m'):
         num = 0
         search_soup = get_soup(link.format('+'.join(title.split()), num))
         search_results = search_soup.findAll('a', class_='hoverinfo_trigger fw-b fl-l')
-
+        try:
+            path = __file__
+            path = path.replace("cmd_mal.py", "")
+            shutil.rmtree(path + "__pycache__")
+        except:
+            pass
         if search_results:
             options = []
 
@@ -175,7 +180,7 @@ def mal_get_all_info(link, title):
     anime_dict['Episodes'] = mal_get_episodes(mal_soup)
     anime_dict['Aired'] = mal_get_aired(mal_soup)
     anime_dict['Synopsis'] = mal_get_synopsis(mal_soup)
-
+    anime_dict['Related Anime'] = mal_get_related_anime(mal_soup)
     return anime_dict
 
 
@@ -253,7 +258,38 @@ def mal_get_synopsis(mal_soup):
         for item in result.contents:
             res += str(item).strip()
     res = res.replace("<br/>", "\n")
+    res = res.replace("<i>", "")
+    res = res.replace("</i>", "")
     return res
+
+
+def mal_get_related_anime(mal_soup):
+    """
+    Given the HTML soup returns the related anime information.
+
+    Parameters
+    ----------
+    mal_soup : str
+        HTML soup from beautiful soup
+
+    Returns
+    -------
+    str
+        Related anime information from the soup
+    """
+    search_results = mal_soup.findAll('table', class_='anime_detail_related_anime')
+    result = search_results[0].findAll('tr')
+    string = ""
+    for item in result:
+        num = 0
+        for content in item.contents[:2]:
+            if num == 1:
+                string += content.find('a').string
+            else:
+                string += content.string + " "
+            num += 1
+        string += "\n"
+    return string
 
 
 def print_mal_dict(mal_dict):
@@ -280,6 +316,7 @@ def print_mal_dict(mal_dict):
     print("Aired: " +  mal_dict['Aired'])
     print("Synopsis: " +  mal_dict['Synopsis'])
     print("")
+    print("Related Anime: " + mal_dict['Related Anime'])
     print("--------------------------------------------------------------------")
     print("")
     return
