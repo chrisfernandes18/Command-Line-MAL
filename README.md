@@ -34,9 +34,13 @@ Once a result has been selected by the user, the program will output the title, 
 ![Output for Black Clover](assets/images/output.png)
 
 ### CSV Capabilities
-Can make a new CSV file or append to an existing file, given the filepath and name of the file. The CSV file holds the information that is displayed in the output, and it is ordered alphabetically by title of show or movie. If a title already exists in the CSV file, then it will update that row.
+Can make a new CSV file or append to an existing file. The first time one uses the program, it asks for the name of the CSV file, including the .csv extension, to which one would like to append. Every other time the program asks if the user would like to append to the file, the program knows the name of the file. The CSV file holds the information that is displayed in the output, and it is ordered alphabetically by title of show or movie. If a title already exists in the CSV file, then it will update that row. The file is located on one's Desktop.
 
 ![Example CSV File](assets/images/csv_file_ex.png)
+
+To edit the name of the file to which one wants to append, it can be done when the program is initially run by pressing 'm'.
+
+![Change CSV File Name](assets/images/more_options.png)
 
 ### Coming Soon
 TBD what new features will be added.
