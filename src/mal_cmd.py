@@ -5,7 +5,7 @@ from .mal_options import options_menu, new_csv_filename, get_animes_from_userpro
 
 def get_user_input(flag): 
     """
-    Returns a string containing user provided movie/tv title
+    Returns a string containing user provided movie/tv title.
 
     Parameters
     ----------
@@ -16,7 +16,7 @@ def get_user_input(flag):
     Returns
     -------
     str
-        User input
+        User input.
 
     """
     if (flag == 0):
@@ -35,14 +35,14 @@ def search_mal(title):
     Parameters
     ----------
     title : str
-        Title of anime movie or show
+        Title of anime movie or show.
 
     Returns
     -------
     str
-        Link of user's selection
+        Link of user's selection.
     str
-        Title name of link
+        Title name of link.
     """
     if (title == ""):
         print("Did not provide a title.")
@@ -138,7 +138,7 @@ def print_mal_dict(mal_dict):
     Parameters
     ----------
     mal_dict : dict
-        Dictionary filled with information from anime page
+        Dictionary filled with information from anime page.
 
     Returns
     -------
@@ -158,30 +158,3 @@ def print_mal_dict(mal_dict):
     print("--------------------------------------------------------------------")
     print("")
     return
-
-
-def search_again():
-    """
-    Gives the option to search again if wanted.
-
-    Parameters
-    ----------
-    None
-
-    Returns
-    -------
-    int | function()
-        Either 1 if we want to search again or 
-        quit() if we do not want to search again
-    """
-    while True:
-        choice = input("Would you like to restart program? (Y/N): ")
-        try:
-            if (choice[0].lower() == 'y'):
-                return 1
-            elif (choice[0].lower() == 'n'):
-                return quit()
-            else:
-                print("Incorrect input. Please enter Y/y or N/n.")
-        except:
-            return quit()

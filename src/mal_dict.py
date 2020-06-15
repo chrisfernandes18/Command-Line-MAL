@@ -8,9 +8,9 @@ def mal_get_all_info(link, title):
     Parameters
     ----------
     link : str
-        Link to specific anime page on MAL
+        Link to specific anime page on MAL.
     title : str
-        Name of anime
+        Name of anime.
 
     Returns
     -------
@@ -36,15 +36,18 @@ def mal_get_rating(mal_soup):
     Parameters
     ----------
     mal_soup : str
-        HTML soup from beautiful soup
+        HTML soup from beautiful soup.
 
     Returns
     -------
     str
-        Rating from the soup
+        Rating from the soup.
     """
     search_results = mal_soup.findAll('span', itemprop='ratingValue')
-    return search_results[0].string
+    try:
+        return search_results[0].string
+    except:
+        return "?"
 
 
 def mal_get_episodes(mal_soup):
@@ -54,15 +57,18 @@ def mal_get_episodes(mal_soup):
     Parameters
     ----------
     mal_soup : str
-        HTML soup from beautiful soup
+        HTML soup from beautiful soup.
 
     Returns
     -------
     str
-        Number of episodes from the soup
+        Number of episodes from the soup.
     """
     search_results = mal_soup.findAll('span', id='curEps')
-    return search_results[0].string
+    try:
+        return search_results[0].string
+    except:
+        return "?"
 
 
 def mal_get_aired(mal_soup):
@@ -72,15 +78,18 @@ def mal_get_aired(mal_soup):
     Parameters
     ----------
     mal_soup : str
-        HTML soup from beautiful soup
+        HTML soup from beautiful soup.
 
     Returns
     -------
     str
-        Show's time period aired from the soup
+        Show's time period aired from the soup.
     """
     search_results = mal_soup.findAll('div', class_='spaceit')
-    return search_results[1].contents[2].strip()
+    try:
+        return search_results[1].contents[2].strip()
+    except:
+        return "?"
 
 
 def mal_get_synopsis(mal_soup):
@@ -90,12 +99,12 @@ def mal_get_synopsis(mal_soup):
     Parameters
     ----------
     mal_soup : str
-        HTML soup from beautiful soup
+        HTML soup from beautiful soup.
 
     Returns
     -------
     str
-        Synopsis from the soup
+        Synopsis from the soup.
     """   
     search_results = mal_soup.findAll('span', itemprop='description')
     res = ""
@@ -115,15 +124,19 @@ def mal_get_related_anime(mal_soup):
     Parameters
     ----------
     mal_soup : str
-        HTML soup from beautiful soup
+        HTML soup from beautiful soup.
 
     Returns
     -------
     str
-        Related anime information from the soup
+        Related anime information from the soup.
     """
     search_results = mal_soup.findAll('table', class_='anime_detail_related_anime')
-    result = search_results[0].findAll('tr')
+    result = []
+    try:
+        result = search_results[0].findAll('tr')
+    except:
+        pass
     string = ""
     for item in result:
         num = 0

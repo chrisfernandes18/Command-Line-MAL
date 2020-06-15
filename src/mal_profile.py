@@ -1,6 +1,7 @@
 import json
 from .mal_soup import get_soup
 from .mal_dict import mal_get_all_info
+from .mal_csv import export_to_csv
 
 def profile(username):
     """
@@ -10,7 +11,7 @@ def profile(username):
     Parameters
     ----------
     username : str
-        MAL profile username
+        MAL profile username.
 
     Returns
     -------
@@ -20,9 +21,10 @@ def profile(username):
     link = "https://myanimelist.net/animelist/{}".format(username)
     mal_soup = get_soup(link)
     table = json.loads(mal_soup.find('table').get('data-items'))
-    
+    print("\nRunning...\n")
     for dic in table:
         link = "https://myanimelist.net{}"
         res = mal_get_all_info(link.format(dic['anime_url']), dic['anime_title'])
-        print(res)
+        export_to_csv(res, 1)
+    print("Finished.")
     return

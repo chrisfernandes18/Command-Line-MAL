@@ -1,4 +1,4 @@
-from src.mal_cmd import  get_user_input, search_mal, print_mal_dict, search_again
+from src.mal_cmd import  get_user_input, search_mal, print_mal_dict
 from src.mal_csv import export_to_csv
 from src.mal_dict import mal_get_all_info
 

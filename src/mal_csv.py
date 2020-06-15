@@ -1,5 +1,5 @@
 import csv, os, operator
-from .mal_cmd import search_again
+from .mal_soup import search_again
 from .mal_file import file_exists, read_file, create_file
 
 dir = ""
@@ -8,23 +8,28 @@ if os.name == 'nt':
 else:
     dir = "~/Desktop/"
 
-def export_to_csv(mal_dict):
+def export_to_csv(mal_dict, option=0):
     """
-    Returns a string containing user provided csv filename
+    Returns a string containing user provided csv filename.
 
     Parameters
     ----------
     mal_dict : dict
-        Dictionary containing information about the title
+        Dictionary containing information about the title.
+    option : int
+        Refers to if exporting singluar anime or profile.
 
     Returns
     -------
-    search_again()
-        function to search another title
+    search_again() | None
+        Function to search another title or returns None upon copmletion.
 
     """
-    export = input("Would you like to add this to a csv file (Y/N)? ")
-    export = export[0].lower()
+    export = 'y'
+    if (option == 0):
+        export = input("Would you like to add this to a csv file (Y/N)? ")
+        export = export[0].lower()
+    
     while True:
         if (export == 'y'):
             csv_file = ""
@@ -42,8 +47,11 @@ def export_to_csv(mal_dict):
             if os.path.exists(csv_file):
                 try:
                     sort_csv(csv_file, col_names, mal_dict)
-                    print("Title was appended to an existing csv file.")
-                    return search_again()
+                    if (option == 0):
+                        print("Title was appended to an existing csv file.")
+                        return search_again()
+                    else:
+                        return None
                 except IOError:
                     print("I/O error")
             else:
@@ -53,7 +61,10 @@ def export_to_csv(mal_dict):
                         writer.writeheader()
                         writer.writerow(mal_dict)
                     print("CSV file was created and the title was added to the file.")
-                    return search_again()
+                    if (option == 0):
+                        return search_again()
+                    else:
+                        return None
                 except IOError:
                     print("I/O error")
         elif (export == 'n'):
@@ -80,7 +91,7 @@ def sort_csv(filename, col_names, mal_dict):
     Returns
     -------
     None 
-
+        Returns None upon completion.
     """
     reader = csv.reader(open(filename), delimiter=",")
     sortedlist = sorted(reader, key=operator.itemgetter(0), reverse=False)

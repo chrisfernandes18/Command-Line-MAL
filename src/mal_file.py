@@ -9,7 +9,7 @@ def file_exists():
 
     Parameters
     ----------
-    None : NoneType
+    None
 
     Returns
     -------
@@ -26,12 +26,12 @@ def create_file(filename):
     Parameters
     ----------
     filename : str
-        Name of the file to put into the text file
+        Name of the file to put into the text file.
 
     Returns
     -------
     None
-
+        Returns None upon completion.
     """
     open(file_path, 'a+').write(filename + "\n")
     return
@@ -42,7 +42,7 @@ def read_file():
 
     Parameters
     ----------
-    None: NoneType
+    None
 
     Returns
     -------
@@ -54,7 +54,7 @@ def read_file():
 
 def edit_file(filename):
     """
-    Returns create_file() or None
+    Returns create_file() or None.
 
     Parameters
     ----------
@@ -63,7 +63,7 @@ def edit_file(filename):
 
     Returns
     -------
-    create_file() or None
+    create_file() | None.
 
     """
     if file_exists():
