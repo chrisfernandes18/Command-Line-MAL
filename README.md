@@ -33,14 +33,23 @@ Once a result has been selected by the user, the program will output the title, 
 
 ![Output for Black Clover](assets/images/output.png)
 
-### CSV Capabilities
-Can make a new CSV file or append to an existing file. The first time one uses the program, it asks for the name of the CSV file, including the .csv extension, to which one would like to append. Every other time the program asks if the user would like to append to the file, the program knows the name of the file. The CSV file holds the information that is displayed in the output, and it is ordered alphabetically by title of show or movie. If a title already exists in the CSV file, then it will update that row. The file is located on one's Desktop.
+### More Options
+
+To view more options, press 'm' when the program is initially run.
+
+![Change CSV File Name](assets/images/more_options.png)
+
+#### CSV Capabilities
+
+Can make a new CSV file or append to an existing file. The first time one uses the program, it asks for the name of the CSV file, including the .csv extension, to which one would like to append. Every other time the program asks if the user would like to append to the file, the program saved the name of the file previously. The CSV file holds the information that is displayed in the output, and it is ordered alphabetically by title of show or movie. If a title already exists in the CSV file, then it will update that row. The file is located on one's Desktop.
 
 ![Example CSV File](assets/images/csv_file_ex.png)
 
-To edit the name of the file to which one wants to append, it can be done when the program is initially run by pressing 'm'.
+#### Import Shows from MAL Profile
 
-![Change CSV File Name](assets/images/more_options.png)
+When selecting option 2, the user will be prompted with giving the username. After giving the username, if the user has already put the csv file to which the shows will be added to previously, the program will run and update the file with all the shows from the profile given.
+
+![Example Profile Import](assets/images/profile_import.png)
 
 ### Coming Soon
 TBD what new features will be added.
