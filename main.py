@@ -1,5 +1,6 @@
-from src.cmd_mal import search_again, search_mal, get_user_input, print_mal_dict, mal_get_all_info
-from src.maltocsv import export_to_csv
+from src.mal_cmd import  get_user_input, search_mal, print_mal_dict, search_again
+from src.mal_csv import export_to_csv
+from src.mal_dict import mal_get_all_info
 
 def main(flag):
     while True:
