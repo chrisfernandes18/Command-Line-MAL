@@ -1,9 +1,10 @@
-import sys, shutil
+"""Functions used for command line parsing and printing"""
+import sys
+import shutil
 from .mal_soup import get_soup
-from .mal_file import edit_file
 from .mal_options import options_menu, new_csv_filename, get_animes_from_userprofile
 
-def get_user_input(flag): 
+def get_user_input(flag):
     """
     Returns a string containing user provided movie/tv title.
 
@@ -19,7 +20,7 @@ def get_user_input(flag):
         User input.
 
     """
-    if (flag == 0):
+    if flag == 0:
         if len(sys.argv) > 1:
             return " ".join(sys.argv[1:])
         else:

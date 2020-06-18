@@ -17,11 +17,11 @@ Requires two third party modules:
 Once the modules are installed, enter the directory which contains the scripts in the terminal. The name of the show or movie can be searched either just running the program and then inputing the name or or the name follows the program as a command line argument.
 
 ---
-`python3 main.py Black Clover`
+`$ python3 main.py Black Clover`
 
 or
 
-`python3 main.py` <br>
+`$ python3 main.py` <br>
 `Enter the title of the anime movie or show you want to search for: Black Clover`
 
 ---
