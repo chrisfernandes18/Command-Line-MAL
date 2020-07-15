@@ -1,5 +1,6 @@
 """"Functions used to gete the html soup and to search again in command line."""
-import bs4, requests
+import bs4
+import requests
 
 def get_soup(link):
     """
@@ -33,17 +34,16 @@ def search_again():
     Returns
     -------
     int | function()
-        Either 1 if we want to search again or 
+        Either 1 if we want to search again o
         quit() if we do not want to search again.
     """
     while True:
         choice = input("Would you like to restart program? (Y/N): ")
         try:
-            if (choice[0].lower() == 'y'):
+            if choice[0].lower() == 'y':
                 return 1
-            elif (choice[0].lower() == 'n'):
+            if choice[0].lower() == 'n':
                 return quit()
-            else:
-                print("Incorrect input. Please enter Y/y or N/n.")
-        except:
+            print("Incorrect input. Please enter Y/y or N/n.")
+        except IndexError:
             return quit()
