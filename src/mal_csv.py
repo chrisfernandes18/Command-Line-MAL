@@ -40,7 +40,7 @@ def export_to_csv(mal_dict, option=0):
             else:
                 csv_file = input("What is the name of your CSV file (include .csv extension)?: ")
                 create_file(csv_file)
-            os.chdir(os.path.expanduser(dir))
+            os.chdir(os.path.expanduser(DIRECTORY))
             col_names = []
             for key in mal_dict.keys():
                 col_names.append(key)
