@@ -1,3 +1,4 @@
+"""Functions used to create menu of more options on command line."""
 from .mal_file import edit_file
 from .mal_profile import profile
 
@@ -23,7 +24,6 @@ def options_menu():
     print("({}). Change csv file name".format(NEW_CSV_NUM))
     print("({}). Get anime from MAL profile".format(ITER_PROFILE_NUM))
     print("")
-    return
 
 def new_csv_filename(selection):
     """
@@ -39,16 +39,15 @@ def new_csv_filename(selection):
     None
         Returns none upon completion.
     """
-    if (selection == NEW_CSV_NUM):
+    if selection == NEW_CSV_NUM:
         fname = ""
         while True:
             fname = input("New csv file name (include .csv file extension): ")
-            if (fname == ""):
+            if fname == "":
                 print("Please enter a valid name.")
             else:
                 break
         edit_file(fname)
-    return
 
 def get_animes_from_userprofile(selection):
     """
@@ -64,13 +63,12 @@ def get_animes_from_userprofile(selection):
     None
         Returns none upon completion.
     """
-    if (selection == ITER_PROFILE_NUM):
+    if selection == ITER_PROFILE_NUM:
         uname = ""
         while True:
             uname = input("\nMAL Profile Username: ")
-            if (uname == ""):
+            if uname == "":
                 print("Please enter a valid name.")
             else:
                 break
         profile(uname)
-    return

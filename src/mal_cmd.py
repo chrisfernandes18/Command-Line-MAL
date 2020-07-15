@@ -1,4 +1,4 @@
-"""Functions used for command line parsing and printing"""
+"""Functions used for command line parsing and printing."""
 import sys
 import shutil
 from .mal_soup import get_soup
@@ -45,11 +45,11 @@ def search_mal(title):
     str
         Title name of link.
     """
-    if (title == ""):
+    if title == "":
         print("Did not provide a title.")
         return None, None
-    
-    if (title.lower() == "m"):
+
+    if title.lower() == "m":
         options_menu()
         while True:
             selection = input("Selection: ")
@@ -80,23 +80,23 @@ def search_mal(title):
 
             for search_field in search_results:
                 options.append(search_field)
-            
+
             if options:
                 i = 0
                 length = len(options)
                 temp = 0
 
-                if (length > 5):
+                if length > 5:
                     num = 5
                 else:
                     num = length
-                
+
                 while True:
                     print("")
                     print("{} results were found for {}".format(num, title))
                     print("")
 
-                    if (i == num):
+                    if i == num:
                         i = temp
                     else:
                         temp = i
@@ -105,21 +105,24 @@ def search_mal(title):
                         print('({}). {}'.format(i + 1, options[i].string))
                         i += 1
 
-                    choice = input('\nEnter the number corresponding with your choice, (M)ore for more results, or <Enter> to quit: ')
-                    
-                    try: 
-                        if (choice[0].lower() == 'm'):
-                            if (num < length):
+                    choice = input('\nEnter the number corresponding with your choice,' + \
+                                   ' (M)ore for more results, or <Enter> to quit: ')
+
+                    try:
+                        if choice[0].lower() == 'm':
+                            if num < length:
                                 num += 5
                             else:
-                                search_results = get_soup(link.format('+'.join(title.split()), num)).findAll('a', class_='hoverinfo_trigger fw-b fl-l')
+                                search_results = get_soup(link.format('+'.join(title.split()),\
+                                     num)).findAll('a', class_='hoverinfo_trigger fw-b fl-l')
                                 for search_field in search_results:
                                     options.append(search_field.string)
                                 length = len(options)
-                        elif (choice.isdigit()):
+                        elif choice.isdigit():
                             try:
-                                return options[int(choice) - 1].get('href'), options[int(choice) - 1].string
-                            except: 
+                                return options[int(choice) - 1].get('href'), \
+                                       options[int(choice) - 1].string
+                            except:
                                 pass
                         else:
                             continue
@@ -158,4 +161,3 @@ def print_mal_dict(mal_dict):
     print("Related Anime:\n" + mal_dict['Related Anime'])
     print("--------------------------------------------------------------------")
     print("")
-    return

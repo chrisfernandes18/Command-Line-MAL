@@ -1,6 +1,7 @@
+"""Functions used for creating internal file."""
 import os.path
 
-file_path = os.path.abspath(__file__).replace("src/mal_file.py", "") + "assets/file/file.txt"
+FILE_PATH = os.path.abspath(__file__).replace("src/mal_file.py", "") + "assets/file/file.txt"
 
 def file_exists():
     """
@@ -17,7 +18,7 @@ def file_exists():
         True if file exists, false if it does not exist
 
     """
-    return os.path.exists(file_path)
+    return os.path.exists(FILE_PATH)
 
 def create_file(filename):
     """
@@ -33,8 +34,7 @@ def create_file(filename):
     None
         Returns None upon completion.
     """
-    open(file_path, 'a+').write(filename + "\n")
-    return
+    open(FILE_PATH, 'a+').write(filename + "\n")
 
 def read_file():
     """
@@ -50,7 +50,7 @@ def read_file():
         Name of the csv file we want to add to.
 
     """
-    return open(file_path, 'r').readline()
+    return open(FILE_PATH, 'r').readline()
 
 def edit_file(filename):
     """
@@ -67,17 +67,15 @@ def edit_file(filename):
 
     """
     if file_exists():
-        os.remove(file_path)
+        os.remove(FILE_PATH)
         return create_file(filename)
-    else:
-        print("File does not exist to change csv filename.")
-        while True:
-            question = input("Would you like to create file (Y/N)?: ")
-            q = question.lower()
-            if q == 'y':
-                return create_file(filename)
-            elif q == 'n':
-                break
-            else:
-                print("Please answer again.")
-        return
+    print("File does not exist to change csv filename.")
+    while True:
+        question = input("Would you like to create file (Y/N)?: ")
+        q = question.lower()
+        if q == 'y':
+            return create_file(filename)
+        elif q == 'n':
+            break
+        else:
+            print("Please answer again.")

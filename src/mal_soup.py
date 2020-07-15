@@ -1,3 +1,4 @@
+""""Functions used to gete the html soup and to search again in command line."""
 import bs4, requests
 
 def get_soup(link):

@@ -1,4 +1,6 @@
+"""Functions used for getting animes from MAL profile."""
 import json
+from time import sleep
 from .mal_soup import get_soup
 from .mal_dict import mal_get_all_info
 from .mal_csv import export_to_csv
@@ -26,5 +28,5 @@ def profile(username):
         link = "https://myanimelist.net{}"
         res = mal_get_all_info(link.format(dic['anime_url']), dic['anime_title'])
         export_to_csv(res, 1)
+        sleep(5)
     print("Finished.")
-    return

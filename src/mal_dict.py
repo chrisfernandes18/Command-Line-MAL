@@ -1,8 +1,9 @@
+"""Functions used getting all MAL information and producing a dict."""
 from .mal_soup import get_soup
 
 def mal_get_all_info(link, title):
     """
-    Returns a dictionary containing all relevant information from the 
+    Returns a dictionary containing all relevant information from the
     anime webpage.
 
     Parameters
@@ -46,7 +47,7 @@ def mal_get_rating(mal_soup):
     search_results = mal_soup.findAll('span', itemprop='ratingValue')
     try:
         return search_results[0].string
-    except:
+    except IndexError:
         return "?"
 
 
@@ -67,7 +68,7 @@ def mal_get_episodes(mal_soup):
     search_results = mal_soup.findAll('span', id='curEps')
     try:
         return search_results[0].string
-    except:
+    except IndexError:
         return "?"
 
 
@@ -88,7 +89,7 @@ def mal_get_aired(mal_soup):
     search_results = mal_soup.findAll('div', class_='spaceit')
     try:
         return search_results[1].contents[2].strip()
-    except:
+    except IndexError:
         return "?"
 
 
@@ -105,7 +106,7 @@ def mal_get_synopsis(mal_soup):
     -------
     str
         Synopsis from the soup.
-    """   
+    """
     search_results = mal_soup.findAll('span', itemprop='description')
     res = ""
     for result in search_results:
@@ -135,7 +136,7 @@ def mal_get_related_anime(mal_soup):
     result = []
     try:
         result = search_results[0].findAll('tr')
-    except:
+    except IndexError:
         pass
     string = ""
     for item in result:
